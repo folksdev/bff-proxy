@@ -2,6 +2,7 @@ package org.acikkaynak.proxy.controller;
 
 
 import org.acikkaynak.proxy.dto.GeoLocationDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,8 @@ import javax.validation.constraints.NotBlank;
 @Validated
 public class ResolveLocationProxyApi {
 
-    private static final String BASE_URL = "https://public-sdc.trendyol.com/discovery-web-websfxgeolocation-santral/geocode?address=";
+    @Value("${bff.url}")
+    private String BASE_URL;
 
     private final RestTemplate restTemplate;
 
